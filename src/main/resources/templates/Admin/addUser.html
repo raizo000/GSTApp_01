@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="Layout/AdminLayout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Thêm tài khoản</title>
+</head>
+<body>
+<div class="container " layout:fragment="content">
+    <div>
+        <div class="panel-body">
+            <form id="regis" th:action="@{/home/admin/add-user}" th:object="${user}" method="post" role="form">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="row">
+                            <div class="form-group col-md-5">
+                                <label>Email</label>
+                                <input class="form-control" type="email" placeholder="Email" id="email" name="email"
+                                       th:field="*{email}" required="required"
+                                />
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Mật khẩu</label>
+                                <input class="form-control" type="password" placeholder="Mật khẩu" id="password"
+                                       th:field="*{password}" name="password" required="required"
+                                />
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-5 dropdown">
+                                <select class="form-control" style="width:auto" name="user.role" th:field="*{role}">
+
+                                    <option th:value="1" th:text="Admin"></option>
+                                    <option th:value="2" th:text="Staff"></option>
+                                    <option th:value="3" th:text="Trainer"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class=" row-border">
+                            <div class="col-md-6 col-xs-offset-4">
+                                <button class="btn btn-primary ">Lưu</button>
+                                <button class="btn btn-danger " type="button">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

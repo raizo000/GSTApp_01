@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="Layout/AdminLayout">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Chỉnh sửa tài khoản</title>
+</head>
+
+<body>
+<div class="container " layout:fragment="content">
+
+
+    <div>
+        <div class="form-group col-md-5 " th:object="${users}">
+            <label>Tài khoản</label>
+            <input class="form-control" type="text" disabled="disabled" placeholder="Tài khoản" id="email" name="email"
+                   th:field="*{email}" required="required"
+            />
+        </div>
+        <form id="regis" th:action="@{/home/admin/luu-mat-khau/{id}(id=${users.id})}" th:object="${user}" method="post"
+              role="form">
+            <div class="panel-body">
+                <div class="row">
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-5 ">
+                        <label>Mật khẩu mới</label>
+                        <input class="form-control" type="password" id="password"
+                               name="password" th:field="*{password}" required="required"
+                        />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-5 ">
+                        <label>Xác nhận mật khẩu</label>
+                        <input class="form-control" type="password" id="confirmPassword"
+                               name="confirmPassword" required="required"
+                        />
+                    </div>
+                </div>
+
+                <br/>
+                <div class=" row-border">
+                    <div class="col-md-6 col-xs-offset-4">
+                        <button class="btn btn-primary ">Lưu</button>
+                        <button class="btn btn-danger " type="button" onclick="resetFunc(regis)">Hủy</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>
