@@ -41,8 +41,6 @@ public class AdminController {
         if (bindingResult.hasErrors()) {
             return "/Admin/addUser";
         } else {
-            Object a = user;
-
             userService.saveUser(user);
             model.addAttribute("successMessage", "Tạo tài khoản thành công");
             return "/Admin/addUser";

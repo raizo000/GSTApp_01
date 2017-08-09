@@ -25,6 +25,25 @@ public class UserDetails {
     private String program_language;
     @Column(name = "birthday")
     private String birthday;
+    @Column(name = "education")
+    private String education;
+
+    public int getUserDetails_id() {
+        return userDetails_id;
+    }
+
+    public void setUserDetails_id(int userDetails_id) {
+        this.userDetails_id = userDetails_id;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;

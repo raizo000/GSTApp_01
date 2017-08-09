@@ -1,46 +1,59 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <title>navbar</title>
 
     <!-- Bootstrap Core CSS -->
 
     <!-- MetisMenu CSS -->
-    <link href="../static/vendor/metisMenu/metisMenu.min.css" th:href="@{/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet"
+    <link href="../static/vendor/metisMenu/metisMenu.min.css" th:href="@{/vendor/metisMenu/metisMenu.min.css}"
+          rel="stylesheet"
     />
 
     <!-- Custom CSS -->
-    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet"
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet"
     />
 
     <!-- MetisMenu CSS -->
-    <link href="../static/vendor/metisMenu/metisMenu.min.css" th:href="@{/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet"
+    <link href="../static/vendor/metisMenu/metisMenu.min.css" th:href="@{/vendor/metisMenu/metisMenu.min.css}"
+          rel="stylesheet"
     />
 
     <!-- Custom CSS -->
-    <link href="../static/dist/css/sb-admin-2.css" th:href="@{/dist/css/sb-admin-2.css}" rel="stylesheet" />
+    <link href="../static/dist/css/sb-admin-2.css" th:href="@{/dist/css/sb-admin-2.css}" rel="stylesheet"/>
 
-    <link href="../static/vendor/datatables-plugins/dataTables.bootstrap.css" th:href="@{/vendor/datatables-plugins/dataTables.bootstrap.css}"
-          rel="stylesheet" />
+    <link href="../static/vendor/datatables-plugins/dataTables.bootstrap.css"
+          th:href="@{/vendor/datatables-plugins/dataTables.bootstrap.css}"
+          rel="stylesheet"/>
 
     <!-- DataTables Responsive CSS -->
-    <link href="../static/vendor/datatables-responsive/dataTables.responsive.css" th:href="@{/vendor/datatables-responsive/dataTables.responsive.css}"
-          rel="stylesheet" />
+    <link href="../static/vendor/datatables-responsive/dataTables.responsive.css"
+          th:href="@{/vendor/datatables-responsive/dataTables.responsive.css}"
+          rel="stylesheet"/>
     <!-- Custom Fonts -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}"
-          rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}"
+          rel="stylesheet" type="text/css"/>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js}"></script>
-    <script src="http://code.jquery.com/ui/1.8.24/jquery-ui.js" th:href="@{http://code.jquery.com/ui/1.8.24/jquery-ui.js}"></script>
-    <script type="text/javascript" src="http://cdn.jsdelivr.net/momentjs/latest/moment.min.js" th:href="@{http://cdn.jsdelivr.net/momentjs/latest/moment.min.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"
+            th:href="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js}"></script>
+    <script src="http://code.jquery.com/ui/1.8.24/jquery-ui.js"
+            th:href="@{http://code.jquery.com/ui/1.8.24/jquery-ui.js}"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+            th:href="@{http://cdn.jsdelivr.net/momentjs/latest/moment.min.js}"></script>
     <!-- Include Date Range Picker -->
-    <script type="text/javascript" src="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js" th:href="@{http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js}"></script>
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" th:href="@{http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css}" />
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"
+            th:href="@{http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js}"></script>
+    <link rel="stylesheet" type="text/css"
+          href="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"
+          th:href="@{http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css}"/>
 
 </head>
 
@@ -90,10 +103,11 @@
                         <a th:href="@{/home}"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i> Quản lý người dùng<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i> Quản lý người dùng<span
+                                class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a th:href="@{/home/admin/registration}"> Thêm tài khoản trainer</a>
+                                <a th:href="@{/home/staff/add-user}"> Thêm tài khoản trainer</a>
                             </li>
                             <li>
                                 <a th:href="@{/home/admin/userlist}">Tìm kiếm</a>
@@ -102,7 +116,8 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><i class=" fa-address-card"></i> Quản lý course, category<span class="fa arrow"></span></a>
+                        <a href="#"><i class=" fa-address-card"></i> Quản lý course, category<span
+                                class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a th:href="@{/home/admin/add-student}">Thêm học sinh</a>
@@ -126,7 +141,8 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span
+                                class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="#">Second Level Item</a>
@@ -196,9 +212,12 @@
 <script src="../static/data/morris-data.js" th:src="@{/data/morris-data.js}"></script>
 
 <!-- DataTables JavaScript -->
-<script src="../static/vendor/datatables/js/jquery.dataTables.min.js" th:src="@{/vendor/datatables/js/jquery.dataTables.min.js}"></script>
-<script src="../static/vendor/datatables-plugins/dataTables.bootstrap.min.js" th:src="@{/vendor/datatables-plugins/dataTables.bootstrap.min.js}"></script>
-<script src="../static/vendor/datatables-responsive/dataTables.responsive.js" th:src="@{/vendor/datatables-responsive/dataTables.responsive.js}"></script>
+<script src="../static/vendor/datatables/js/jquery.dataTables.min.js"
+        th:src="@{/vendor/datatables/js/jquery.dataTables.min.js}"></script>
+<script src="../static/vendor/datatables-plugins/dataTables.bootstrap.min.js"
+        th:src="@{/vendor/datatables-plugins/dataTables.bootstrap.min.js}"></script>
+<script src="../static/vendor/datatables-responsive/dataTables.responsive.js"
+        th:src="@{/vendor/datatables-responsive/dataTables.responsive.js}"></script>
 <!-- Custom Theme JavaScript -->
 <script src="../static/dist/js/sb-admin-2.js " th:src="@{/dist/js/sb-admin-2.js}"></script>
 <script src="../static/js/custome.js" th:src="@{/js/custome.js}"></script>
