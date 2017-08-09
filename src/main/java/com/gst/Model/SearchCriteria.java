@@ -1,9 +1,11 @@
 package com.gst.Model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.validator.constraints.NotBlank;
 
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SearchCriteria {
     @NotBlank(message = "username can't empty!")
     String username;

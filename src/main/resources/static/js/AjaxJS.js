@@ -7,22 +7,29 @@ $(document).ready(function () {
         var search = {}
         search["username"] = $("#username").val();
         $("#btn-search").prop("disabled", true);
-        $('#example').DataTable({
+        console.log(JSON.stringify(search));
+        console.log(JSON.parse('{"username": "admin@gmail.com"}'));
+        $('#example').dataTable({
             "ajax": {
                 "url": "http://localhost:8080/home/admin/search",
-                "contentType": "application/json",
                 "type": "POST",
-                data: JSON.parse('{"username": "admin@gmail.com"}'),
-            }
-            ,
+                "serverSide": true,
+                "contentType": "application/json; charset=utf-8",
+                dataType: 'json',
+                data: function (a) {
+                    return JSON.stringify(search);
+                },
+                dataSrc: 'result',
+            },
             "columns":
                 [
-                    {"result": "id"},
-                    {"result": "email"},
-                    {"result": "password"},
-                ]
+                    {data: "id"},
+                    {data: "email"},
+                    {data: "id"},
+                    {data: "role.role"},
+                ],
         });
-
+        fire_ajax_submit()
     });
 
 })

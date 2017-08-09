@@ -25,13 +25,13 @@ public class SearchRestController {
     }
 
     @PostMapping("home/admin/search")
-    public List<User> getSearchResultViaAjax(@Valid @RequestBody SearchCriteria user) {
+    public ResponseEntity<?> getSearchResultViaAjax(@Valid @RequestBody SearchCriteria user) {
         Object aa = user;
         AjaxResponse result = new AjaxResponse();
+        List<User> users = userService.findAllbyEmail(user.getUsername());
+        result.setResult(users);
 
-
-        return userService.findAllbyEmail(user.getUsername());
-
+        return ResponseEntity.ok(result);
     }
 }
 
