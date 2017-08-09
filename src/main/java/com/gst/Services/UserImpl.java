@@ -71,7 +71,7 @@ public class UserImpl implements UserService {
 
     @Override
     public void updatePassword(int id, User user) {
-        userRepository.updatePassword(id, bCryptPasswordEncoder.encode(user.getPassword()));
+        userRepository.updatePassword(id, bCryptPasswordEncoder.encode(user.getPassword()), user.getRole().getId());
     }
 
     @Override

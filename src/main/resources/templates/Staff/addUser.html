@@ -25,6 +25,13 @@
                                 <input class="form-control" type="email" id="email" name="email"
                                        th:value="${user.email}" required="required"
                                 />
+
+                                <div th:if="${emailError}"
+                                     class="alert alert-danger alert-dismissable col-md-5 ">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                    <strong th:text="${emailError}"></strong>
+                                </div>
+
                             </div>
                         </div>
                         <div class="row">
@@ -33,6 +40,7 @@
                                 <input class="form-control" type="password" id="password"
                                        th:value="${user.password}" name="password" required="required"
                                 />
+
                             </div>
                         </div>
                         <div class="row">
@@ -62,6 +70,16 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="form-group col-md-7">
+                                <label>Quê quán</label>
+                                <div class="form-group ">
+                                    <textarea class="form-control" type="text" id="location" name="location"
+                                              th:value="${userDetails.location}"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="form-group col-md-2">
                                 <label>Trình độ</label>
                                 <div class="form-group ">
@@ -79,7 +97,7 @@
                                 />
                             </div>
                         </div>
-                        <input type="hidden" id="role" name="role"   value="3"/>
+                        <input type="hidden" id="role" name="role" value="3"/>
                         <div class="row">
                             <div class="form-group col-md-5">
                                 <label>Ngôn ngữ lập trình</label>

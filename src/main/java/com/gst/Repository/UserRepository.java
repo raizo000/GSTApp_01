@@ -13,12 +13,14 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     List<User> findAllByActive(int active);
+
     List<User> findAllByEmail(String email);
+
     User findByEmail(String email);
 
     @Modifying
-    @Query("Update User set password=:password where id=:id")
-    void updatePassword(@Param("id") int id, @Param("password") String password);
+    @Query("Update User set password=:password, role_id=:role_id where id=:id")
+    void updatePassword(@Param("id") int id, @Param("password") String password, @Param("role_id") int role_id);
 
     @Modifying
     @Query("Update User set active=2 where id=:id")

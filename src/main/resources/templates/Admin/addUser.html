@@ -21,6 +21,8 @@
                                 />
 
                             </div>
+                            <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                   class="validation-message"></label>
                         </div>
                         <div class="row">
                             <div class="col-md-5">

@@ -27,12 +27,9 @@ public class StaffController {
     @PostMapping("home/staff/add-user")
     public String addTrainer(@Valid User user, @Valid UserDetails userDetails, Model model, BindingResult bindingResult) {
 
-        User existUser = userService.findUserByEmail(user.getEmail());
-        if (existUser != null) {
-            bindingResult.rejectValue("email", "error.user", "Email đã tồn tại");
-        }
-        if (bindingResult.hasErrors()) {
-            return "/Staff/addUser";
+        User userExist = userService.findUserByEmail(user.getEmail());
+        if (userExist != null) {
+            model.addAttribute("emailError", "Email đã được sử dụng");
         } else {
             userService.saveTrainer(user, userDetails);
             model.addAttribute("successMessage", "Tạo tài khoản thành công");
