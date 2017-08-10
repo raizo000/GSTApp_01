@@ -21,17 +21,9 @@ public class User {
     private String password;
     @Column(name = "active")
     private int active;
-   /* @OneToOne(mappedBy = "user")
+    @OneToOne
+    @JoinColumn(name = "userDetails_id")
     private UserDetails userDetails;
-
-    public UserDetails getUserDetails() {
-        return userDetails;
-    }
-
-    public void setUserDetails(UserDetails userDetails) {
-        this.userDetails = userDetails;
-    }
-*/
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     private Role role;
@@ -77,4 +69,12 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+    public UserDetails getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
+    }
+
 }

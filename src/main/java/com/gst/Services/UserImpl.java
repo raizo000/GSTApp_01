@@ -1,17 +1,13 @@
 package com.gst.Services;
 
-import com.gst.Model.Role;
 import com.gst.Model.User;
 import com.gst.Model.UserDetails;
-import com.gst.Repository.RoleRepository;
 import com.gst.Repository.UserDetailsRepository;
 import com.gst.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -39,6 +35,7 @@ public class UserImpl implements UserService {
         if (user.getRole().getId() == 3) {
             UserDetails userDetails = new UserDetails();
             userDetails.setUser(user);
+            userDetails.setActive(1);
             userDetailsRepository.save(userDetails);
         }
         userRepository.save(user);
@@ -48,6 +45,7 @@ public class UserImpl implements UserService {
     public void saveTrainer(User user, UserDetails userDetails) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
+        userDetails.setActive(1);
         user.setRole(user.getRole());
         userDetails.setUser(user);
         userDetailsRepository.save(userDetails);
@@ -76,7 +74,9 @@ public class UserImpl implements UserService {
 
     @Override
     public void deleteUser(int id) {
+
         userRepository.deleteUser(id);
+        userDetailsRepository.deleteUserDetails(id);
     }
 
 

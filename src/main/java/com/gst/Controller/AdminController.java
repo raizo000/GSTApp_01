@@ -1,11 +1,9 @@
 package com.gst.Controller;
 
 
-import com.gst.Model.Role;
 import com.gst.Model.User;
 import com.gst.Services.RoleService;
 import com.gst.Services.UserService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -50,6 +48,8 @@ public class AdminController {
     @GetMapping("home/admin/user-list")
     public String getUserList(Model model) {
         model.addAttribute("user", userService.findAllUserActive());
+       List<User> aa = userService.findAllUserActive();
+
         return "/Admin/user_list";
     }
 
@@ -75,8 +75,9 @@ public class AdminController {
         redirectAttributes.addFlashAttribute("successDelete", "Xóa thành công tài khoản" + userService.findOne(id).getEmail());
         return "redirect:/home/admin/user-list";
     }
+
     @GetMapping("home/admin/search-user")
-    public String ajax(){
+    public String ajax() {
         return "/Admin/SearchAjax";
     }
 

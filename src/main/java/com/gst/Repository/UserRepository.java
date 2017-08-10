@@ -23,6 +23,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     void updatePassword(@Param("id") int id, @Param("password") String password, @Param("role_id") int role_id);
 
     @Modifying
-    @Query("Update User set active=2 where id=:id")
+    @Query("Update User set active=2 where id=:id ")
     void deleteUser(@Param("id") int id);
 }

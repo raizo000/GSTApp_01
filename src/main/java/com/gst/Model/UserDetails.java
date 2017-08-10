@@ -27,26 +27,19 @@ public class UserDetails {
     private String birthday;
     @Column(name = "education")
     private String education;
-
-    public int getUserDetails_id() {
-        return userDetails_id;
-    }
-
-    public void setUserDetails_id(int userDetails_id) {
-        this.userDetails_id = userDetails_id;
-    }
-
-    public String getEducation() {
-        return education;
-    }
-
-    public void setEducation(String education) {
-        this.education = education;
-    }
-
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
+    @Column(name = "active")
+    private int active;
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
 
     public int getUser_id() {
         return userDetails_id;
@@ -118,5 +111,21 @@ public class UserDetails {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public int getUserDetails_id() {
+        return userDetails_id;
+    }
+
+    public void setUserDetails_id(int userDetails_id) {
+        this.userDetails_id = userDetails_id;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
     }
 }
