@@ -2,7 +2,9 @@ package com.gst.Controller;
 
 
 import com.gst.Model.User;
+import com.gst.Model.UserDetails;
 import com.gst.Services.RoleService;
+import com.gst.Services.UserDetailService;
 import com.gst.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -22,6 +25,8 @@ public class AdminController {
     RoleService roleService;
     @Autowired
     UserService userService;
+    @Autowired
+    UserDetailService userDetailService;
 
     @GetMapping("home/admin/add-user")
     public String addUser(Model model) {
@@ -47,9 +52,16 @@ public class AdminController {
 
     @GetMapping("home/admin/user-list")
     public String getUserList(Model model) {
-        model.addAttribute("user", userService.findAllUserActive());
-       List<User> aa = userService.findAllUserActive();
+        model.addAttribute("user", userService.findAllByActive());
+        List<User> aa = userService.findAllUserActive();
+        List<UserDetails> bb = userDetailService.findAllAciveUserDetails();
 
+  /*      HashMap<User, UserDetails> map = new HashMap();
+        for (int i = 0; i < aa.size(); i++) {
+            map.put(aa.get(i), bb.get(i));
+        }
+        HashMap<User, UserDetails> map2 = new HashMap();
+        map2 = map;*/
         return "/Admin/user_list";
     }
 

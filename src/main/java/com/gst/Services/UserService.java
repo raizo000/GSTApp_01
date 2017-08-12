@@ -15,7 +15,7 @@ public interface UserService {
 
     List<User> findAllUserActive();
     List<User> findAllbyEmail(String email);
-
+    List<User> findAllByActive();
     void updatePassword(int id, User user);
 
     void deleteUser(int id);

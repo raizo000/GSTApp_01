@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -15,4 +16,6 @@ public interface UserDetailsRepository extends JpaRepository<UserDetails, Intege
     @Modifying
     @Query("update UserDetails  set active=2 where user_id=:user_id")
     void deleteUserDetails(@Param("user_id") int user_id);
+
+    List<UserDetails> findAllByActive(int active);
 }
