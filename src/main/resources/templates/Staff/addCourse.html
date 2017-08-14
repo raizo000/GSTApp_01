@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="Layout/AdminLayout">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Chỉnh sửa tài khoản</title>
+</head>
+
+<body>
+<div class="container " layout:fragment="content">
+    <div>
+        <form id="regis" th:action="@{/home/staff/add-course}" th:object="${course}" method="post"
+              role="form">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-md-5 ">
+                        <label>Tên course</label>
+                        <input class="form-control" type="text" id="name"
+                               name="name" th:field="*{name}" required="required"
+                        />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-5 ">
+                        <label>Mô tả</label>
+                        <textarea class="form-control" type="text" id="description"
+                                  name="description" th:field="*{description}" required="required"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 dropdown">
+                        <select class="form-control" style="width:auto" name="category" th:field="*{category}">
+                            <option th:each="category :${category}" th:value="${category.category_id}"
+                                    th:text="${category.name}"></option>
+                        </select>
+                    </div>
+                </div>
+                <br/>
+                <div class=" row-border">
+                    <div class="col-md-6 col-xs-offset-4">
+                        <button class="btn btn-primary ">Lưu</button>
+                        <button class="btn btn-danger " type="button">Hủy</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

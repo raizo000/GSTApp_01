@@ -70,7 +70,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" th:href="@{/home}">Phần mềm </a>
+            <a class="navbar-brand" th:href="@{/home/staff}">Phần mềm </a>
         </div>
         <!-- /.navbar-header -->
 
@@ -100,7 +100,7 @@
                 <ul class="nav" id="side-menu">
 
                     <li>
-                        <a th:href="@{/home}"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
+                        <a th:href="@{/home/staff}"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i> Quản lý người dùng<span
@@ -120,10 +120,10 @@
                                 class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a th:href="@{/home/admin/add-student}">Thêm học sinh</a>
+                                <a th:href="@{/home/staff/add-category}">Thêm category</a>
                             </li>
                             <li>
-                                <a href="buttons.html">Buttons</a>
+                                <a th:href="@{/home/staff/add-course}">Thêm course</a>
                             </li>
                             <li>
                                 <a href="notifications.html">Notifications</a>

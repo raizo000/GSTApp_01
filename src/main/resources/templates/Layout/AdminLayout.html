@@ -103,21 +103,15 @@
                     <li>
                         <a th:href="@{/home/admin}"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
                     </li>
+
                     <li>
-                        <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i> Quản lý người dùng<span
-                                class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a th:href="@{/home/admin/add-user}"> Thêm tài khoản</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/home/admin/user-list}">Danh sách tài khoản</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/home/admin/search-user}">Tìm kiếm</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
+                        <a th:href="@{/home/admin/add-user}"> Thêm tài khoản</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/home/admin/user-list}">Danh sách tài khoản</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/home/admin/search-user}">Tìm kiếm</a>
                     </li>
 
                 </ul>
@@ -158,7 +152,7 @@
 <!-- Custom Theme JavaScript -->
 <script src="../static/dist/js/sb-admin-2.js " th:src="@{/dist/js/sb-admin-2.js}"></script>
 <script src="../static/js/custome.js" th:src="@{/js/custome.js}"></script>
-<script  src="../static/js/AjaxJS.js" th:src="@{/js/AjaxJS.js}"></script>
+<script src="../static/js/AjaxJS.js" th:src="@{/js/AjaxJS.js}"></script>
 </body>
 
 </html>

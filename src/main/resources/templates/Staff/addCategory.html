@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="Layout/AdminLayout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Thêm category</title>
+</head>
+<body>
+<div class="container " layout:fragment="content">
+    <div>
+        <div class="panel-body">
+            <form id="regis" th:action="@{/home/staff/add-category}" th:object="${category}" method="post" role="form">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="row">
+                            <div class="form-group col-md-5">
+                                <label>Tên</label>
+                                <input class="form-control" type="text" id="name" name="name"
+                                       th:field="*{name}" required="required"
+                                />
+
+                            </div>
+                            <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                                   class="validation-message"></label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Mô tả</label>
+                                <input class="form-control" type="text" id="description"
+                                       th:field="*{description}" name="description" required="required"
+                                />
+                            </div>
+                        </div>
+                        <br/>
+                        <div class=" row-border">
+                            <div class="col-md-6 col-xs-offset-4">
+                                <button class="btn btn-primary ">Lưu</button>
+                                <button class="btn btn-danger " type="button">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
