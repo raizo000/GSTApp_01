@@ -43,8 +43,10 @@
                                     <td th:text="${iterStat.count}"></td>
                                     <td th:text="${user.email}"></td>
                                     <td th:text="${user.role.role}"></td>
-                                    <td><a th:href="@{/home/admin/thay-doi-mat-khau/{id}(id=${user.id})}"><span  class="fa fa-key" aria-hidden="true"></span></a></td>
-                                    <td><a th:href="@{/home/admin/xoa-tai-khoan/{id}(id=${user.id})}"><span  class="fa fa-times" aria-hidden="true"></span></a></td>
+                                    <td><a th:href="@{/home/staff/thay-doi-thong-tin/{id}(id=${user.id})}"><span
+                                            class="fa fa-key" aria-hidden="true"></span></a></td>
+                                    <td><a th:href="@{/home/staff/xoa-tai-khoan/{id}(id=${user.id})}"><span
+                                            class="fa fa-times" aria-hidden="true"></span></a></td>
                                 </tr>
 
                             </tbody>

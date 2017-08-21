@@ -18,6 +18,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     User findByEmail(String email);
 
+    List<User> findAllByActiveAndRoleId(int active, int id);
+
     @Modifying
     @Query("Update User set password=:password, role_id=:role_id where id=:id")
     void updatePassword(@Param("id") int id, @Param("password") String password, @Param("role_id") int role_id);
@@ -25,4 +27,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Modifying
     @Query("Update User set active=2 where id=:id ")
     void deleteUser(@Param("id") int id);
+
+
 }

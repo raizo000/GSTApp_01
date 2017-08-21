@@ -17,5 +17,16 @@ public interface UserDetailsRepository extends JpaRepository<UserDetails, Intege
     @Query("update UserDetails  set active=2 where user_id=:user_id")
     void deleteUserDetails(@Param("user_id") int user_id);
 
+    @Modifying
+    @Query("update  UserDetails  set last_name=:last_name, first_name=:first_name,experience=:experience," +
+            "location=:location,program_language=:program_language,education=:education, birthday=:birthday where user_id=:user_id")
+    void saveDetails(@Param("last_name") String last_name, @Param("first_name") String first_name,
+                     @Param("experience") String experience, @Param("location") String location,
+                     @Param("education") String education, @Param("program_language") String program_language,
+                     @Param("birthday") String birthday,
+                     @Param("user_id") int user_id);
+
     List<UserDetails> findAllByActive(int active);
+
+    UserDetails findUserDetailsByUser_id(int id);
 }

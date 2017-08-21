@@ -10,72 +10,98 @@
 
 <body>
 <div class="container " layout:fragment="content">
-
-
     <div>
-        <div class="form-group col-md-5 " th:object="${users}">
-            <label>Tài khoản</label>
-            <input class="form-control" type="text" disabled="disabled" placeholder="Tài khoản" id="email" name="email"
-                   th:field="*{email}" required="required"
-            />
+        <div class="row">
+            <div class="form-group col-md-5 " th:object="${users}">
+                <label>Tài khoản</label>
+                <input class="form-control" type="text" disabled="disabled" placeholder="Tài khoản"
+                       id="email" name="email"
+                       th:field="*{email}" required="required"
+                />
+            </div>
         </div>
-        <form id="regis" th:action="@{/home/admin/luu-mat-khau/{id}(id=${users.id})}" method="post"
+        <form id="regis" th:action="@{/home/staff/luu-thay-doi-thong-tin/{id}(id=${users.id})}" method="post"
               role="form">
             <div class="panel-body">
                 <div class="row">
-                    <div class="form-group col-md-5 ">
-                        <label>Họ</label>
-                        <input class="form-control" type="text" id="last_name"
-                               name="last_name" th:value="${last_name}" required="required"
-                        />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-5 ">
-                        <label>Tên</label>
-                        <input class="form-control" type="text" id="first_name"
-                               name="first_name" th:value="${first_name}" required="required"
-                        />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-5 ">
-                        <label>Email</label>
-                        <input class="form-control" type="text" id="email"
-                               name="email" th:value="${email}" required="required"
-                        />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-5 ">
-                        <label>Email</label>
-                        <input class="form-control" type="text" id="email"
-                               name="email" th:value="${phone}" required="required"
-                        />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-5 ">
-                        <label>Mật khẩu mới</label>
-                        <input class="form-control" type="password" id="password"
-                               name="password" th:field="*{password}" required="required"
-                        />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-5 ">
-                        <label>Xác nhận mật khẩu</label>
-                        <input class="form-control" type="password" id="confirmPassword"
-                               name="confirmPassword" required="required"
-                        />
-                    </div>
-                </div>
 
-                <br/>
-                <div class=" row-border">
-                    <div class="col-md-6 col-xs-offset-4">
-                        <button class="btn btn-primary ">Lưu</button>
-                        <button class="btn btn-danger " type="button" onclick="resetFunc(regis)">Hủy</button>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label>Họ</label>
+                            <input class="form-control" type="text" id="last_name" name="last_name"
+                                   th:value="${userDetails.last_name}"
+                            />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label>Tên</label>
+                            <input class="form-control" type="text" id="first_name" name="first_name"
+                                   th:value="${userDetails.first_name}"
+                            />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <label>Ngày sinh</label>
+                            <div class="form-group ">
+                                <input class="form-control" type="text" id="birthday" name="birthday"
+                                       th:value="${userDetails.birthday}"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-7">
+                            <label>Quê quán</label>
+                            <div class="form-group " th:object="${userDetails}">
+                                    <textarea class="form-control" type="text" id="location" name="location"
+                                              th:field="*{location}"
+                                    ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <label>Trình độ</label>
+                            <div class="form-group ">
+                                <input class="form-control" type="text" id="education" name="education"
+                                       th:value="${userDetails.education}"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>TOIEC</label>
+                            <input class="form-control" type="text" id="toiec" name="toiec"
+                                   th:value="${userDetails.toiec}"
+                            />
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <input type="hidden" id="role" name="role" value="3"/>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label>Ngôn ngữ lập trình</label>
+                            <input class="form-control" type="text" id="program_language" name="program_language"
+                                   th:value="${userDetails.program_language}"
+                            />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-7" th:object="${userDetails}">
+                            <label>Kinh nghiệm làm việc</label>
+                            <textarea class="form-control" id="experience" name="experience"
+                                      th:field="*{experience}"></textarea>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class=" row-border">
+                        <div class="col-md-6 col-xs-offset-4">
+                            <button class="btn btn-primary ">Lưu</button>
+                            <button class="btn btn-danger " type="button">Hủy</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -47,6 +47,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findTrainer() {
+        return userRepository.findAllByActiveAndRoleId(1, 3);
+    }
+
+    @Override
     public void saveTrainer(User user, UserDetails userDetails) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
@@ -75,6 +80,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updatePassword(int id, User user) {
         userRepository.updatePassword(id, bCryptPasswordEncoder.encode(user.getPassword()), user.getRole().getId());
+    }
+
+    @Override
+    public UserDetails findTrainerDetails(int id) {
+        return userDetailsRepository.findUserDetailsByUser_id(id);
+    }
+
+    @Override
+    public void updateTrainerDetails(int id, UserDetails userDetails) {
+        userDetailsRepository.saveDetails(userDetails.getLast_name(), userDetails.getFirst_name(),
+                userDetails.getExperience(), userDetails.getLocation(), userDetails.getEducation(),
+                userDetails.getProgram_language(), userDetails.getBirthday(), id);
     }
 
     @Override

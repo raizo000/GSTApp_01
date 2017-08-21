@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -27,6 +29,29 @@ public class StaffController {
         model.addAttribute("user", new User());
         model.addAttribute("userDetails", new UserDetails());
         return "/Staff/addUser";
+    }
+
+    @GetMapping("home/staff/user-list")
+    public String getTrainerList(Model model) {
+        Object a = userService.findTrainer();
+        model.addAttribute("user", userService.findTrainer());
+        return "/Staff/user_list";
+    }
+
+    @GetMapping("home/staff/thay-doi-thong-tin/{id}")
+    public String editTrainer(Model model, @PathVariable int id) {
+        model.addAttribute("users", userService.findOne(id));
+        Object aa = userService.findTrainerDetails(id);
+        model.addAttribute("userDetails", userService.findTrainerDetails(id));
+        return "/Staff/editUser";
+
+    }
+
+    @PostMapping("/home/staff/luu-thay-doi-thong-tin/{id}")
+    public String postEditTrainer(@PathVariable int id, @Valid UserDetails userDetails, RedirectAttributes redirectAttributes) {
+        userService.updateTrainerDetails(id, userDetails);
+        redirectAttributes.addFlashAttribute("successEdit", "Cập nhật thành công tài khoản" + userService.findOne(id).getEmail());
+        return "redirect:/home/staff/user-list";
     }
 
     @PostMapping("home/staff/add-user")
@@ -47,6 +72,7 @@ public class StaffController {
         model.addAttribute("category", new Category());
         return "/Staff/addCategory";
     }
+
 
     @PostMapping("home/staff/add-category")
     public String addCategory(@Valid Category category, Model model, BindingResult bindingResult) {

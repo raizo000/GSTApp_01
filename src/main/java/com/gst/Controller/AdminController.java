@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -55,13 +54,6 @@ public class AdminController {
         model.addAttribute("user", userService.findAllByActive());
         List<User> aa = userService.findAllUserActive();
         List<UserDetails> bb = userDetailService.findAllAciveUserDetails();
-
-  /*      HashMap<User, UserDetails> map = new HashMap();
-        for (int i = 0; i < aa.size(); i++) {
-            map.put(aa.get(i), bb.get(i));
-        }
-        HashMap<User, UserDetails> map2 = new HashMap();
-        map2 = map;*/
         return "/Admin/user_list";
     }
 
@@ -75,7 +67,6 @@ public class AdminController {
 
     @PostMapping("home/admin/luu-mat-khau/{id}")
     public String savePassword(@PathVariable int id, @Valid User user, RedirectAttributes redirectAttributes) {
-        Object aaa = user;
         userService.updatePassword(id, user);
         redirectAttributes.addFlashAttribute("successEdit", "Cập nhật thành công tài khoản" + userService.findOne(id).getEmail());
         return "redirect:/home/admin/user-list";

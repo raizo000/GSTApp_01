@@ -8,15 +8,20 @@ import java.util.List;
 
 public interface UserService {
     User findUserByEmail(String email);
-
-    void saveUser(User user);
-    void saveTrainer(User user, UserDetails userDetails);
     User findOne(int id);
 
+    UserDetails findTrainerDetails(int id);
+
+    List<User> findTrainer();
     List<User> findAllUserActive();
     List<User> findAllbyEmail(String email);
     List<User> findAllByActive();
+
+    void saveUser(User user);
+
+    void saveTrainer(User user, UserDetails userDetails);
     void updatePassword(int id, User user);
 
+    void updateTrainerDetails(int id, UserDetails userDetails);
     void deleteUser(int id);
 }
