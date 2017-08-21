@@ -28,5 +28,7 @@ public interface UserDetailsRepository extends JpaRepository<UserDetails, Intege
 
     List<UserDetails> findAllByActive(int active);
 
+    UserDetails findByUser_idAndActive(int id, int active);
+
     UserDetails findUserDetailsByUser_id(int id);
 }
