@@ -31,29 +31,6 @@ public class StaffController {
         return "/Staff/addUser";
     }
 
-    @GetMapping("home/staff/user-list")
-    public String getTrainerList(Model model) {
-        Object a = userService.findTrainer();
-        model.addAttribute("user", userService.findTrainer());
-        return "/Staff/user_list";
-    }
-
-    @GetMapping("home/staff/thay-doi-thong-tin/{id}")
-    public String editTrainer(Model model, @PathVariable int id) {
-        model.addAttribute("users", userService.findOne(id));
-        Object aa = userService.findTrainerDetails(id);
-        model.addAttribute("userDetails", userService.findTrainerDetails(id));
-        return "/Staff/editUser";
-
-    }
-
-    @PostMapping("/home/staff/luu-thay-doi-thong-tin/{id}")
-    public String postEditTrainer(@PathVariable int id, @Valid UserDetails userDetails, RedirectAttributes redirectAttributes) {
-        userService.updateTrainerDetails(id, userDetails);
-        redirectAttributes.addFlashAttribute("successEdit", "Cập nhật thành công tài khoản" + userService.findOne(id).getEmail());
-        return "redirect:/home/staff/user-list";
-    }
-
     @PostMapping("home/staff/add-user")
     public String addTrainer(@Valid User user, @Valid UserDetails userDetails, Model model) {
 
@@ -66,13 +43,33 @@ public class StaffController {
         }
         return "/Staff/addUser";
     }
+    @GetMapping("home/staff/user-list")
+    public String getTrainerList(Model model) {
+        Object a = userService.findTrainer();
+        model.addAttribute("user", userService.findTrainer());
+        return "/Staff/user_list";
+    }
+
+    @GetMapping("home/staff/thay-doi-thong-tin/{id}")
+    public String editTrainer(Model model, @PathVariable int id) {
+        model.addAttribute("users", userService.findOne(id));
+        model.addAttribute("userDetails", userService.findTrainerDetails(id));
+        return "/Staff/editUser";
+
+    }
+
+    @PostMapping("/home/staff/luu-thay-doi-thong-tin/{id}")
+    public String postEditTrainer(@PathVariable int id, @Valid UserDetails userDetails, RedirectAttributes redirectAttributes) {
+        userService.updateTrainerDetails(id, userDetails);
+        redirectAttributes.addFlashAttribute("successEdit", "Cập nhật thành công tài khoản" + userService.findOne(id).getEmail());
+        return "redirect:/home/staff/user-list";
+    }
 
     @GetMapping("home/staff/add-category")
     public String addCategoryHome(Model model) {
         model.addAttribute("category", new Category());
         return "/Staff/addCategory";
     }
-
 
     @PostMapping("home/staff/add-category")
     public String addCategory(@Valid Category category, Model model, BindingResult bindingResult) {
@@ -101,5 +98,12 @@ public class StaffController {
     public String addcourse(Course course) {
         categoryCourseService.saveCourse(course);
         return "staff/addCourse";
+    }
+
+    @GetMapping("/home/staff/xoa-tai-khoan/{id}")
+    public String deleteUser(@PathVariable int id, RedirectAttributes redirectAttributes) {
+        userService.deleteUser(id);
+        redirectAttributes.addFlashAttribute("successDelete", "Xóa thành công tài khoản" + userService.findOne(id).getEmail());
+        return "redirect:/home/staff/user-list";
     }
 }
