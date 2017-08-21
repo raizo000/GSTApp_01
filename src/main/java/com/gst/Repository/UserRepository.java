@@ -16,9 +16,11 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     List<User> findAllByEmail(String email);
 
+    List<User> findAllByActiveAndRoleId(int active, int id);
+
     User findByEmail(String email);
 
-    List<User> findAllByActiveAndRoleId(int active, int id);
+    User findByActiveAndEmail(int active, String email);
 
     @Modifying
     @Query("Update User set password=:password, role_id=:role_id where id=:id")

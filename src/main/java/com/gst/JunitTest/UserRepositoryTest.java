@@ -15,8 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
 
 @DataJpaTest
@@ -52,6 +51,12 @@ public class UserRepositoryTest {
         assertTrue(bCryptPasswordEncoder.matches("1234567899", user.getPassword()));
     }
 
+    @Test
+    public void deleteUser() throws Exception {
+        userRepository.deleteUser(1);
+        User user = userRepository.findByActiveAndEmail(1, "admin@gmail.com");
+        assertNull(user);
+    }
 }
 
 
