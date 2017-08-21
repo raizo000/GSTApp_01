@@ -61,7 +61,7 @@ public class StaffController {
     @PostMapping("/home/staff/luu-thay-doi-thong-tin/{id}")
     public String postEditTrainer(@PathVariable int id, @Valid UserDetails userDetails, RedirectAttributes redirectAttributes) {
         userService.updateTrainerDetails(id, userDetails);
-        redirectAttributes.addFlashAttribute("successEdit", "Cập nhật thành công tài khoản" + userService.findOne(id).getEmail());
+        redirectAttributes.addFlashAttribute("successEdit", "Cập nhật thành công tài khoản  " + userService.findOne(id).getEmail());
         return "redirect:/home/staff/user-list";
     }
 
@@ -103,7 +103,7 @@ public class StaffController {
     @GetMapping("/home/staff/xoa-tai-khoan/{id}")
     public String deleteUser(@PathVariable int id, RedirectAttributes redirectAttributes) {
         userService.deleteUser(id);
-        redirectAttributes.addFlashAttribute("successDelete", "Xóa thành công tài khoản" + userService.findOne(id).getEmail());
+        redirectAttributes.addFlashAttribute("successDelete", "Xóa thành công tài khoản  " + userService.findOne(id).getEmail());
         return "redirect:/home/staff/user-list";
     }
 }
