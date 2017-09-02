@@ -4,10 +4,15 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "user")
+
+@SqlResultSetMapping(name = "UserSqlMapping", classes = {@ConstructorResult(targetClass = User.class,
+        columns = {
+                @ColumnResult(name = "user_id"),
+                @ColumnResult(name = "email")
+        })})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,6 +33,14 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    public User(int id, String email) {
+        this.email = email;
+        this.id = id;
+    }
+
+    public User() {
+    }
+
     public Role getRole() {
         return role;
     }
@@ -44,7 +57,6 @@ public class User {
         this.id = id;
     }
 
-
     public String getPassword() {
         return password;
     }
@@ -52,7 +64,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     public int getActive() {
         return active;
@@ -69,6 +80,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
     public UserDetails getUserDetails() {
         return userDetails;
     }

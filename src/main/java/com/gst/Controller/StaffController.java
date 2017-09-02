@@ -106,4 +106,9 @@ public class StaffController {
         redirectAttributes.addFlashAttribute("successDelete", "Xóa thành công tài khoản  " + userService.findOne(id).getEmail());
         return "redirect:/home/staff/user-list";
     }
+
+    @GetMapping("home/staff/search-user")
+    public String searchAjax() {
+        return "/Staff/Search";
+    }
 }

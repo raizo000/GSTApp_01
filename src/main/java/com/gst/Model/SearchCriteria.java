@@ -9,6 +9,16 @@ import java.util.List;
 public class SearchCriteria {
     @NotBlank(message = "username can't empty!")
     String username;
+    String option;
+
+    public String getOption() {
+        return option;
+    }
+
+    public void setOption(String option) {
+        this.option = option;
+    }
+
     List<User> userList;
 
     public List<User> getUserList() {

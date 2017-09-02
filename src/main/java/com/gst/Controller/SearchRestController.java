@@ -6,14 +6,12 @@ import com.gst.Model.User;
 import com.gst.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class SearchRestController {
@@ -24,13 +22,17 @@ public class SearchRestController {
         this.userService = userService;
     }
 
-    @PostMapping("home/admin/search")
+    @PostMapping("home/staff/search")
     public ResponseEntity<?> getSearchResultViaAjax(@Valid @RequestBody SearchCriteria user) {
         Object aa = user;
         AjaxResponse result = new AjaxResponse();
-        List<User> users = userService.findAllbyEmail(user.getUsername());
-        result.setResult(users);
-
+        if (user.getOption().equals("1")) {
+            List<User> users = userService.findAllbyEmail(user.getUsername());
+            result.setResult(users);
+        } else if (user.getOption().equals("2")) {
+            List<User> users = userService.findAllByToiec(user.getUsername());
+            result.setResult(users);
+        }
         return ResponseEntity.ok(result);
     }
 }

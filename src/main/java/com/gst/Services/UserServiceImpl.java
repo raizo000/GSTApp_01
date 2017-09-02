@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Service
@@ -19,6 +21,8 @@ public class UserServiceImpl implements UserService {
     BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     UserDetailsRepository userDetailsRepository;
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Override
     public User findUserByEmail(String email) {
@@ -83,6 +87,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findAllByToiec(String toiec) {
+
+        List<User> getUser = entityManager.createNativeQuery("select user.user_id,user.email from  UserDetails userDetails " +
+                "join User user on user.user_id=userDetails.user_id where userDetails.toiec=?", "UserSqlMapping")
+                .setParameter(1, toiec).getResultList();
+        return getUser;
+    }
+
+    @Override
     public UserDetails findTrainerDetails(int id) {
         return userDetailsRepository.findUserDetailsByUser_id(id);
     }
@@ -91,7 +104,7 @@ public class UserServiceImpl implements UserService {
     public void updateTrainerDetails(int id, UserDetails userDetails) {
         userDetailsRepository.saveDetails(userDetails.getLast_name(), userDetails.getFirst_name(),
                 userDetails.getExperience(), userDetails.getLocation(), userDetails.getEducation(),
-                userDetails.getProgram_language(), userDetails.getBirthday(), id);
+                userDetails.getProgram_language(), userDetails.getBirthday(), id, userDetails.getToiec());
     }
 
     @Override

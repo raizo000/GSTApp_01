@@ -79,10 +79,6 @@ public class AdminController {
         return "redirect:/home/admin/user-list";
     }
 
-    @GetMapping("home/admin/search-user")
-    public String ajax() {
-        return "/Admin/SearchAjax";
-    }
 
 }
 
