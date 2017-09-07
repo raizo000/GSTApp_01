@@ -1,7 +1,5 @@
 package com.gst.Model;
 
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
-
 import javax.persistence.*;
 
 @Entity

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/xhtml"
-      layout:decorator="Layout/AdminLayout">
+      layout:decorator="Layout/StaffLayout">
 
 <head>
     <meta charset="UTF-8"/>
@@ -11,22 +11,30 @@
     <div class="starter-template">
         <div id="feedback"></div>
         <form class="form-horizontal" id="search-form">
-            <div class="form-group form-group-lg">
-                <label class="col-sm-2 control-label">Thông tin tìm kiếm</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" id="username"/>
+            <div class="form-group form-group-md">
+                <div class="col-sm-3">
                     <br/>
-                    <select id="option">
+                    <input type="text" class="form-control" placeholder="Nhập thông tin" id="username"/>
+                    <br/>
+                </div>
+                <br/>
+                <div class="input-group input-group-md col-md-2">
+
+                    <select id="option" class="form-control">
                         <option value="1">Tên tài khoản</option>
                         <option value="2">Điểm TOIEC</option>
                     </select>
+                    <br/>
+                    <div class="input-group-btn">
+                        <br/>
+                        <button class="btn btn-primary" id="bth-search" type="submit"><i
+                                class="glyphicon glyphicon-search"></i></button>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" id="bth-search"
-                            class="btn btn-primary btn-lg">Search
-                    </button>
+
                 </div>
             </div>
         </form>
@@ -40,7 +48,6 @@
             <th>Xóa</th>
         </tr>
         </thead>
-
     </table>
 </div>
 </body>

@@ -28,13 +28,13 @@ $(document).ready(function () {
                     {
                         data: "id",
                         "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html("<a href='/home/staff/thay-doi-thong-tin/" + oData.id + "'>" + oData.id + "</a>");
+                            $(nTd).html("<a href='/home/staff/thay-doi-thong-tin/" + oData.id + "'>" + "Chỉnh sửa" + "</a>");
                         }
                     },
                     {
                         data: "id",
                         "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html("<a href='/home/staff/xoa-tai-khoan/" + oData.id + "'>" + oData.id + "</a>");
+                            $(nTd).html("<a href='/home/staff/xoa-tai-khoan/" + oData.id + "'>" + "Xóa" + "</a>");
                         }
                     }
                     //  {data: "role.role"},
