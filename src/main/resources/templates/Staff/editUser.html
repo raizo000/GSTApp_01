@@ -20,7 +20,7 @@
                 />
             </div>
         </div>
-        <form id="regis" th:action="@{/home/staff/luu-thay-doi-thong-tin/{id}(id=${users.id})}" method="post"
+        <form id="form" th:action="@{/home/staff/luu-thay-doi-thong-tin/{id}(id=${users.id})}" method="post"
               role="form">
             <div class="panel-body">
                 <div class="row">
@@ -100,7 +100,7 @@
                     <div class=" row-border">
                         <div class="col-md-6 col-xs-offset-4">
                             <button class="btn btn-primary ">Lưu</button>
-                            <button class="btn btn-danger " type="button">Hủy</button>
+                            <button class="btn btn-danger " onclick="resetFunction()" type="button">Hủy</button>
                         </div>
                     </div>
                 </div>

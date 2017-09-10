@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="panel-body">
-            <form id="regis" th:action="@{/home/staff/add-user}" method="post" role="form">
+            <form id="form" th:action="@{/home/staff/add-user}" method="post" role="form">
                 <div class="panel-body">
                     <div class="row">
                         <div class="row">
@@ -118,7 +118,7 @@
                         <div class=" row-border">
                             <div class="col-md-6 col-xs-offset-4">
                                 <button class="btn btn-primary ">Lưu</button>
-                                <button class="btn btn-danger " type="button">Hủy</button>
+                                <button class="btn btn-danger " onclick="resetFunction()" type="button">Hủy</button>
                             </div>
                         </div>
                     </div>

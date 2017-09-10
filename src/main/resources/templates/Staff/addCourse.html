@@ -11,7 +11,7 @@
 <body>
 <div class="container " layout:fragment="content">
     <div>
-        <form id="regis" th:action="@{/home/staff/add-course}" th:object="${course}" method="post"
+        <form id="form" th:action="@{/home/staff/add-course}" th:object="${course}" method="post"
               role="form">
             <div class="panel-body">
                 <div class="row">
@@ -30,7 +30,9 @@
                     </div>
                 </div>
                 <div class="row">
+
                     <div class="col-md-5 dropdown">
+                        <label>Category</label>
                         <select class="form-control" style="width:auto" name="category" th:field="*{category}">
                             <option th:each="category :${category}" th:value="${category.category_id}"
                                     th:text="${category.name}"></option>
@@ -41,7 +43,7 @@
                 <div class=" row-border">
                     <div class="col-md-6 col-xs-offset-4">
                         <button class="btn btn-primary ">Lưu</button>
-                        <button class="btn btn-danger " type="button">Hủy</button>
+                        <button class="btn btn-danger " onclick="resetFunction()" type="button">Hủy</button>
                     </div>
                 </div>
             </div>

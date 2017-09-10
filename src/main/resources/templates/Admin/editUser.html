@@ -19,7 +19,7 @@
                    th:field="*{email}" required="required"
             />
         </div>
-        <form id="regis" th:action="@{/home/admin/luu-mat-khau/{id}(id=${users.id})}" th:object="${user}" method="post"
+        <form id="form" th:action="@{/home/admin/luu-mat-khau/{id}(id=${users.id})}" th:object="${user}" method="post"
               role="form">
             <div class="panel-body">
                 <div class="row">
@@ -28,10 +28,7 @@
                         <input class="form-control" type="password" id="password"
                                name="password" th:field="*{password}" required="required"
                         />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-5 ">
+                        <br/>
                         <label>Xác nhận mật khẩu</label>
                         <input class="form-control" type="password" id="confirmPassword"
                                name="confirmPassword" required="required"

@@ -34,7 +34,6 @@
                         <tr>
                             <th>NO</th>
                             <th>Email</th>
-                            <th></th>
                             <th>Thay đổi thông tin</th>
                             <th>Xóa</th>
                         </tr>
@@ -43,7 +42,6 @@
                         <tr th:each="user,iterStat :${user}" class="odd gradeX">
                             <td th:text="${iterStat.count}"></td>
                             <td th:text="${user.email}"></td>
-                            <td th:text="${user.role.role}"></td>
                             <td><a th:href="@{/home/staff/thay-doi-thong-tin/{id}(id=${user.id})}"><span
                                     class="fa fa-key" aria-hidden="true"></span></a></td>
                             <td><a th:href="@{/home/staff/xoa-tai-khoan/{id}(id=${user.id})}"><span
